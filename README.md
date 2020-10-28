@@ -34,7 +34,7 @@ L'objectif de cette application est de pouvoir gérer une liste simple de dépen
 
 ## MPD
 
-
+![mpdexpenses](mpdexpenses.PNG)
 
 ## Détail des fonctionnalités
 
