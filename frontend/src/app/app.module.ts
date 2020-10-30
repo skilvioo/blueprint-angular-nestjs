@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { IonicModule } from '@ionic/angular';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     IonicModule.forRoot()
   ],
   providers: [],
