@@ -1,0 +1,12 @@
+
+<ion-content>
+
+  <div>
+    Expense Module
+  </div>
+  <app-expense-form-component
+    [categories]="categories$ | async"
+    [currencies]="currencies$ | async"
+    [vatRates]="vatRates$ | async">
+  </app-expense-form-component>
+</ion-content>

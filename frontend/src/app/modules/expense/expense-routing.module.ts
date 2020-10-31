@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {ExpenseComponent} from './expense.component';
 
 const routes: Routes = [
   {
-    path: 'expense',
-    loadChildren: './modules/expense/expense.module#ExpenseModule',
-  },
-  {
     path: '',
-    redirectTo: '/expense',
-    pathMatch: 'full',
+    component: ExpenseComponent,
   }
 ];
 
@@ -17,6 +13,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
+export class ExpenseRoutingModule {
 
 }
