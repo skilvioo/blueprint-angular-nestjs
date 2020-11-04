@@ -1,27 +1,28 @@
-<form formGroup="expenseForm">
+<form [formGroup]="expenseForm"
+      (ngSubmit)="handleOnSubmitButtonClick(expenseForm.value)">
   <div>
     <ion-label>Date</ion-label>
-    <ion-datetime [formControlName]="date"></ion-datetime>
+    <ion-datetime formControlName="date"></ion-datetime>
   </div>
   <div>
     <ion-label>Description</ion-label>
-    <ion-input [formControlName]="description"></ion-input>
+    <ion-input formControlName="description"></ion-input>
   </div>
   <div>
     <ion-label>Montant H.T</ion-label>
-    <ion-input type="number" [formControlName]="amount"></ion-input>
+    <ion-input type="number" formControlName="amount"></ion-input>
   </div>
   <div>
     <ion-label>Montant TVA</ion-label>
-    <ion-input type="number" [formControlName]="vat"></ion-input>
+    <ion-input type="number" formControlName="vat"></ion-input>
   </div>
   <div>
     <ion-label>Montant total</ion-label>
-    <ion-input type="number" [formControlName]="totalAmount"></ion-input>
+    <ion-input type="number" formControlName="totalAmount"></ion-input>
   </div>
   <div>
     <ion-label>Catégorie</ion-label>
-    <ion-select [formControlName]="categoryUid">
+    <ion-select formControlName="categoryUid">
       <ion-select-option [value]="category.uid" *ngFor="let category of categories">
         {{category.label}}
       </ion-select-option>
@@ -29,14 +30,25 @@
   </div>
   <div>
     <ion-label>Devise</ion-label>
-    <ion-select [formControlName]="currencyUid">
-      <ion-select-option *ngFor="let currency of currencies"></ion-select-option>
+    <ion-select formControlName="currencyUid">
+      <ion-select-option [value]="currency.uid" *ngFor="let currency of currencies">
+        {{currency.code}}
+      </ion-select-option>
     </ion-select>
   </div>
   <div>
     <ion-label>Taux de TVA</ion-label>
-    <ion-select [formControlName]="vatRateUid">
-      <ion-select-option *ngFor="let vatRate of vatRates"></ion-select-option>
+    <ion-select formControlName="vatRateUid">
+      <ion-select-option [value]="vatRate.uid" *ngFor="let vatRate of vatRates">
+        {{vatRate.label}}
+      </ion-select-option>
     </ion-select>
+  </div>
+
+  <div>
+    <ion-button type="submit">
+      <ion-icon name="save-outline"></ion-icon>
+      <ion-label>Sauvegarder</ion-label>
+    </ion-button>
   </div>
 </form>

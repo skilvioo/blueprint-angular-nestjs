@@ -1,10 +1,38 @@
 import {HttpException, Injectable, Logger} from '@nestjs/common';
 import { Pool } from 'pg';
+import {Expense} from '../models/expense.model';
 
 @Injectable()
 export class ExpensesRepository {
     private logger = new Logger('ExpensesRepository');
 
+    async insertExpense(expense: Expense): Promise<void> {
+        try {
+            const pool = new Pool({ ssl: true });
+
+            const query = 'INSERT INTO "expense" ' +
+                '(uid,date,descrtiption,amount,vat,totalAmount,categoryUid,currencyUid,vatRateUid) ' +
+                'values ($1, $2, $3, $4, $5, $6, $7, $8, $9);';
+
+            const values = [
+                expense.uid,
+                expense.date,
+                expense.description,
+                expense.amount,
+                expense.vat,
+                expense.totalAmount,
+                expense.category.uid,
+                expense.currency.uid,
+                expense.vatRate.uid,
+            ];
+
+            const res = await pool.query(query, values);
+            await pool.end();
+
+        } catch (error) {
+            this.logger.error('cannot insert expense',error);
+        }
+    }
     async getCategories() {
         try {
             const pool = new Pool({ ssl: true });
@@ -15,7 +43,7 @@ export class ExpensesRepository {
             const categories = [];
             res.rows.forEach((result) => {
                 categories.push(
-                    result
+                    result,
                 );
             });
 
@@ -39,7 +67,7 @@ export class ExpensesRepository {
             const vatRates = [];
             res.rows.forEach((result) => {
                 vatRates.push(
-                    result
+                    result,
                 );
             });
 
@@ -63,7 +91,7 @@ export class ExpensesRepository {
             const currencies = [];
             res.rows.forEach((result) => {
                 currencies.push(
-                    result
+                    result,
                 );
             });
 

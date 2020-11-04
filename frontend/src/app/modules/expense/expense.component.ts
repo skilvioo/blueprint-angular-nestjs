@@ -4,6 +4,7 @@ import {VatRate} from '../../core/models/vat-rate.model';
 import {Currency} from '../../core/models/currency.model';
 import {Category} from '../../core/models/category.model';
 import {ExpenseService} from '../../core/services/expense.service';
+import {Expense} from '../../core/models/expense.model';
 
 @Component({
   selector: 'app-expense-component',
@@ -28,5 +29,13 @@ export class ExpenseComponent implements OnInit{
     this.categories$ = this.expenseService.getCategories();
     this.vatRates$ = this.expenseService.getVatRates();
     this.currencies$ = this.expenseService.getCurrencies();
+  }
+
+  private _postExpense(expense: Expense): void {
+    this.expenseService.postExpense(expense).subscribe();
+  }
+
+  onFormSubmission(expense: Expense): void {
+     this._postExpense(expense);
   }
 }

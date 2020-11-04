@@ -3,6 +3,8 @@ import {ExpenseComponent} from './expense.component';
 import {IonicModule} from '@ionic/angular';
 import {ExpenseRoutingModule} from './expense-routing.module';
 import {CoreModule} from '../../core/core.module';
+import {CommonModule} from '@angular/common';
+import {SharedModule} from '../../shared/shared.module';
 
 
 @NgModule({
@@ -15,6 +17,8 @@ import {CoreModule} from '../../core/core.module';
     IonicModule,
     ExpenseRoutingModule,
     CoreModule,
+    CommonModule,
+    SharedModule,
   ]
 })
 export class ExpenseModule {}

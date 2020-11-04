@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ExpenseModule } from './modules/expense/expense.module';
 
 const routes: Routes = [
   {
     path: 'expense',
-    loadChildren: './modules/expense/expense.module#ExpenseModule',
+    loadChildren: () => ExpenseModule,
   },
   {
     path: '',

@@ -22,6 +22,7 @@
     "@ionic/angular": "^5.4.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "uuidv4": "^5.0.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
